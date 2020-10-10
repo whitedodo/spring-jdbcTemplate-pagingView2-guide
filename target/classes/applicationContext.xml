@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+	
+	<!-- 방법1 - JAVA -->
+	<!-- JAVA 방식(어노테이션)의 AOP - AspectJ Weaver -->
+	<!--  <aop:aspectj-autoproxy></aop:aspectj-autoproxy>	 어노테이션 작업시 필수 선언해야 함. -->
+	
+	<!--  XML 방식의 AOP - AsepectJ Weaver -->
+	<bean id="resultAOP" class="com.website.example.test.ResultAOP"></bean>
+	<bean id="txAdviceXML" class="com.website.example.aop.LogAdvisorXML"></bean>
+
+	<aop:config>
+		<!-- txAdviceXML 하나 영역임 -->
+		<aop:aspect ref='txAdviceXML'>
+
+			<!-- 진입영역 -->
+			<!-- 1개만 가능함 -->
+			<!-- <aop:pointcut id="point1" expression="execution(* com.website.example.test..*())"/> -->
+			<aop:pointcut id="point1" expression="execution(* com.website.example.test.ResultAOP..*())"/>            
+         	<!-- before -->
+         	<aop:before method="beforeMethod" pointcut-ref="point1"/>
+         	<!-- after -->
+         	<aop:after method="afterMethod" pointcut-ref="point1"/>
+        </aop:aspect>
+        
+        <!-- 2번째 선언자 -->
+	</aop:config>
+	
+	<bean id="tv" class="poly.HamaTv" lazy-init="true" />
+	
+</beans>
