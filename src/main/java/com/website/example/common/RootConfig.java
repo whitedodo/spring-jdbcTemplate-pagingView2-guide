@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan(basePackages = {"com.website.example.aop", "com.website.example.test"})
+@ComponentScan(basePackages = {"com.website.example"})
 //@ComponentScan(basePackages = {"com.local.example.beans", "com.local.example.advisor"})
 @EnableAspectJAutoProxy
 public class RootConfig {

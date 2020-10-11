@@ -8,5 +8,5 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<!-- 방법2 - JAVA AspectJ 설정 -->
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
 </beans>

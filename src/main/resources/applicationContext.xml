@@ -15,7 +15,7 @@
 	<!--  <aop:aspectj-autoproxy></aop:aspectj-autoproxy>	 어노테이션 작업시 필수 선언해야 함. -->
 	
 	<!--  XML 방식의 AOP - AsepectJ Weaver -->
-	<bean id="resultAOP" class="com.website.example.test.ResultAOP"></bean>
+	<bean id="resultAOP" class="com.website.example.test.ResultAOP_XmlConfig"></bean>
 	<bean id="txAdviceXML" class="com.website.example.aop.LogAdvisorXML"></bean>
 
 	<aop:config>
@@ -25,7 +25,7 @@
 			<!-- 진입영역 -->
 			<!-- 1개만 가능함 -->
 			<!-- <aop:pointcut id="point1" expression="execution(* com.website.example.test..*())"/> -->
-			<aop:pointcut id="point1" expression="execution(* com.website.example.test.ResultAOP..*())"/>            
+			<aop:pointcut id="point1" expression="execution(* com.website.example.test.ResultAOP_XmlConfig..*())"/>            
          	<!-- before -->
          	<aop:before method="beforeMethod" pointcut-ref="point1"/>
          	<!-- after -->

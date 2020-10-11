@@ -16,7 +16,7 @@ public class TestMain {
 
 	@Test
 	public void TestTV() {
-		
+		/*
 		BeanFactory bean = new BeanFactory();
 		TV tv = (TV) bean.getBeans("hama");
 		
@@ -27,29 +27,33 @@ public class TestMain {
 
 		//System.out.println( "출력2" );
 		//tv.powerOn();
+		 
+		*/
 	}
 	
 	@Test
 	public void aopXMLTest() {
 		
+		/*
 		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationContext.xml");
 		
 		//TV tv1 = (TV) factory.getBean("hama");
 		//tv1.volumeDown();
 		ResultAOP_XmlConfig rAOP = (ResultAOP_XmlConfig) factory.getBean("resultAOP");
 		
-		//rAOP.method1();
-		
+		rAOP.method1();
 		factory.close();
+		*/
+		
 		
 		// 방식2
-		/* ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-		ResultAOP rAOP = ctx.getBean("resultAOP", ResultAOP.class);
+		 ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ResultAOP_XmlConfig rAOP = ctx.getBean("resultAOP", ResultAOP_XmlConfig.class);
 		rAOP.method1();
 		
 		ctx.close();
 		
-		*/
+		
 		
 	}
 	
@@ -59,21 +63,23 @@ public class TestMain {
 		// 방법 1
 		/*
 		// Java 방식 - AOP
+		@SuppressWarnings("resource")
 		AnnotationConfigApplicationContext context = 
 				new AnnotationConfigApplicationContext(RootConfig.class);
 
 		// 1. Aspect 적용
 		// 소문자로 입력(Calculator -> calculator로)
-		ResultAOPJava cal = (ResultAOPJava)context.getBean("cal", ResultAOPJava.class);
+		ResultAOP_JavaConfig cal = context.getBean(ResultAOP_JavaConfig.class);
 		cal.method1();
 		*/
 		
+		/*
 		// 방법 2
 		AbstractApplicationContext factory = new GenericXmlApplicationContext("applicationJavaAOP.xml");
 		
 		ResultAOP_JavaConfig cal = factory.getBean(ResultAOP_JavaConfig.class);
 		cal.method1();
-		
+		*/
 	}
 	
 }

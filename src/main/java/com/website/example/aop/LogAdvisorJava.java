@@ -16,14 +16,15 @@ import org.springframework.stereotype.Service;
 
 // 어노테이션 방식
 @Aspect
+@Service
 public class LogAdvisorJava implements LogAdvisor{
 
-	@Before("execution(* com.website.example.test.ResultAOPJava.*(..))")
+	@Before("execution(* com.website.example.test.ResultAOP_JavaConfig.*(..))")
 	public void beforeAdvice() {
 		System.out.println("전 단계");
 	}
 
-	@After("execution(* com.website.example.test.ResultAOPJava.*(..))")
+	@After("execution(* com.website.example.test.ResultAOP_JavaConfig.*(..))")
 	public void afterAdvice() {
 		System.out.println("후 단계");
 	}
